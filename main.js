@@ -1,16 +1,30 @@
-function findLongestWord(string) {
-  // Change code below this line
-  const wordArray = string.split(" ");
-  console.log(wordArray);
-  let wordLength = wordArray[0];
-  console.log(wordLength);
-  for (let word of wordArray) {
-    if (word.length > wordLength.length) {
-      wordLength = word;
-    }
+const pizzaPalace = {
+  pizzas: ["Ultracheese", "Smoked", "Four meats"],
+
+};
+// Change code above this line
+function order(pizzaName, callback, callbackError) {
+  for (let name of pizzaPalace) {
+    console.log(name)
   }
-  // Change code above this line
-  return wordLength;
+  if (pizzaName === pizzas.length) {
+    callbackError(pizzaName)
+  } else {
+    callback(pizzaName)
+  }
 }
-findLongestWord("The quick brown fox jumped over the lazy dog");
-findLongestWord("Google do a roll");
+// Callback for onSuccess
+function makePizza(pizzaName) {
+  return `Your order is accepted. Cooking pizza ${pizzaName}.`;
+}
+
+// Callback for onError
+function onOrderError(error) {
+  return `Error! ${error}`;
+}
+
+// Method calls with callbacks
+pizzaPalace.order("Smoked", makePizza, onOrderError);
+pizzaPalace.order("Four meats", makePizza, onOrderError);
+pizzaPalace.order("Big Mike", makePizza, onOrderError);
+pizzaPalace.order("Vienna", makePizza, onOrderError);
